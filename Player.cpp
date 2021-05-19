@@ -1,5 +1,6 @@
 #include "Player.h"
 
+
 Player::Player()
 {
     hand = new LinkedList();
@@ -71,10 +72,12 @@ bool Player::replaceTile(TileBag *bag, string tile)
 
     for (int i = 0; i < hand->getSize(); i++)
     {
+
         n = hand->get(i);
 
         Tile *t = n->tile;
-        if (t->colour == tile[0] && t->shape == tile[1])
+
+        if (t->colour == tile[0] && t->shape == (int)tile[1] - charToInt)
         {
             toReplace = t;
             pos = i;
@@ -89,7 +92,7 @@ bool Player::replaceTile(TileBag *bag, string tile)
         hand->addBack(bag->get(0));
     }
 
-    return replaced;
+    return hand;
 }
 
 void Player::setName(string name)
