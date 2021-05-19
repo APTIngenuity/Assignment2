@@ -160,6 +160,7 @@ void Menu::playGame(std::array<Player *, 2> players, GameBoard *gameBoard, TileB
 {
     std::cout << "Let's Play!" << std::endl;
     bool gameEnd = false;
+
     while (!gameEnd)
     {
         int pCount = 0;
@@ -229,6 +230,7 @@ void Menu::playGame(std::array<Player *, 2> players, GameBoard *gameBoard, TileB
                             p->replaceTile(tileBag, tile);
                             cout << "Now your hand is" << endl;
                             std::cout << *p->getHand() << endl;
+                            turnEnd = true;
                         }
                         else
                         {
@@ -245,6 +247,8 @@ void Menu::playGame(std::array<Player *, 2> players, GameBoard *gameBoard, TileB
                     else if (playerInstruction.compare(0, 5, "quit ") == 0)
                     {
                         gameEnd = true;
+                        cout << "Goodbye" << endl;
+                        exit(0);
                     }
                     else
                     {
@@ -258,6 +262,7 @@ void Menu::playGame(std::array<Player *, 2> players, GameBoard *gameBoard, TileB
                             if (p->getHand()->isEmpty())
                             {
                                 gameEnd = true;
+                                turnEnd = true;
                             }
                         }
                     }
