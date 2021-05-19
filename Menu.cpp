@@ -71,7 +71,7 @@ void Menu::startNewGame()
     for (int i = 0; i < MAX_TILES; i++)
     {
 
-        int val = rand() % 6 + 1;
+        int val = rand() % 6;
         char c = colours[val];
 
         int shape = rand() % 6 + 1;
@@ -227,8 +227,8 @@ void Menu::playGame(std::array<Player *, 2> players, GameBoard *gameBoard, TileB
                         if (regex_match(tile, e))
                         {
                             p->replaceTile(tileBag, tile);
-                            // cout << "Your hand is" << endl;
-                            // std::cout << *p->getHand() << endl;
+                            cout << "Now your hand is" << endl;
+                            std::cout << *p->getHand() << endl;
                         }
                         else
                         {

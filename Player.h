@@ -10,6 +10,8 @@
 #include <string>
 #include <fstream>
 
+#define charToInt 48
+
 using std::string;
 using std::ifstream;
 using std::ofstream;
