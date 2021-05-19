@@ -67,13 +67,14 @@ void Menu::startNewGame()
     LinkedList *tilesUnsorted = new LinkedList();
 
     std::array<Colour, 6> colours = {'R', 'O', 'Y', 'G', 'B', 'P'};
-
+    srand(time(0));
     for (int i = 0; i < MAX_TILES; i++)
     {
-        int val = (i % 6);
+
+        int val = rand() % 6 + 1;
         char c = colours[val];
 
-        int shape = val + 1;
+        int shape = rand() % 6 + 1;
 
         Tile *t = new Tile(c, shape);
 
@@ -191,6 +192,7 @@ void Menu::playGame(std::array<Player *, 2> players, GameBoard *gameBoard, TileB
                     {
                         string tile = playerInstruction.substr(6, 2);
                         std::transform(tile.begin(), tile.end(), tile.begin(), ::toupper);
+                        // cout << tile << endl;
                         string loc = playerInstruction.substr(12, 2);
                         std::transform(loc.begin(), loc.end(), loc.begin(), ::toupper);
 
@@ -225,6 +227,8 @@ void Menu::playGame(std::array<Player *, 2> players, GameBoard *gameBoard, TileB
                         if (regex_match(tile, e))
                         {
                             p->replaceTile(tileBag, tile);
+                            // cout << "Your hand is" << endl;
+                            // std::cout << *p->getHand() << endl;
                         }
                         else
                         {
